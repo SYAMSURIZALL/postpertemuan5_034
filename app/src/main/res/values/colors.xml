@@ -1,0 +1,10 @@
+<resources>
+    <!-- Warna utama aplikasi -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>  <!-- Ini penting -->
+    <color name="teal_200">#6600FF</color>
+    <color name="teal_700">#8100FF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>
