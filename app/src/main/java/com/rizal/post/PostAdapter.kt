@@ -1,13 +1,13 @@
 package com.rizal.post
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.rizal.post.databinding.ItemPostBinding
+import java.io.File
 
 class PostAdapter(
     private val context: Context,
@@ -27,10 +27,16 @@ class PostAdapter(
         holder.b.username.text = post.username
         holder.b.caption.text = post.caption
 
-        if (post.imageUri != null) {
-            holder.b.imageView.setImageURI(post.imageUri)
+        val uri = post.imageUri
+        if (uri != null) {
+            val file = File(uri.path ?: "")
+            if (file.exists()) {
+                holder.b.imageView.setImageURI(Uri.fromFile(file))
+            } else {
+                holder.b.imageView.setImageResource(R.drawable.makan)
+            }
         } else {
-            post.imageResId?.let { holder.b.imageView.setImageResource(it) }
+            holder.b.imageView.setImageResource(R.drawable.makan)
         }
 
         holder.b.btnMenu.setOnClickListener { v ->
